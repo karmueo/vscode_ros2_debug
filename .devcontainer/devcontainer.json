@@ -1,34 +1,32 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"dockerFile": "Dockerfile",
-	"build": {
+	"dockerFile": "Dockerfile", // 指定容器构建时使用的 Dockerfile 文件名
+	"build": { // 包含构建容器时使用的参数
 		"args": {
-			"WORKSPACE": "${containerWorkspaceFolder}"
+			"WORKSPACE": "${containerWorkspaceFolder}" // 将 WORKSPACE 构建参数设置为容器中的工作空间文件夹路径
 		}
 	},
-	"remoteUser": "ros",
-	"runArgs": [
+	"remoteUser": "ros", // 指定容器内使用的默认用户账户名
+	"runArgs": [ // 运行容器时附加的 Docker 命令行参数
 		"--network=host",
-		"--cap-add=SYS_PTRACE",
-		"--security-opt=seccomp:unconfined",
-		"--security-opt=apparmor:unconfined",
-		"--volume=/tmp/.X11-unix:/tmp/.X11-unix",
-		"--volume=/mnt/wslg:/mnt/wslg",
-		"--ipc=host"
-		// uncomment to use intel iGPU
-		// "--device=/dev/dri"
+		"--cap-add=SYS_PTRACE", // 给容器添加 SYS_PTRACE 能力，用于调试
+		"--security-opt=seccomp:unconfined", // 关闭 seccomp 安全选项，使容器的安全限制更宽松
+		"--security-opt=apparmor:unconfined", // 关闭 AppArmor 安全选项
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix", // 使容器可以显示 X 应用程序
+		"--volume=/mnt/wslg:/mnt/wslg", // 在使用 WSL 时，挂载 WSLG 相关目录，以支持图形界面
+		"--ipc=host" // 容器与宿主机共享 IPC（进程间通信）命名空间
+		// "--device=/dev/dri" // 如果需要使用宿主机的 Intel GPU，可以取消此行的注释
 	],
-	"containerEnv": {
-		"DISPLAY": "${localEnv:DISPLAY}", // Needed for GUI try ":0" for windows
-		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}",
-		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
-		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
-		"LIBGL_ALWAYS_SOFTWARE": "1" // Needed for software rendering of opengl
+	"containerEnv": { // 设置容器环境变量
+		"DISPLAY": "${localEnv:DISPLAY}", // 设置 DISPLAY 环境变量，通常用于 X11 应用程序，尝试在 Windows 中使用 ":0"
+		"WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}", // 设置 Wayland 显示环境变量
+		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}", // 设置 XDG 运行时目录环境变量
+		"PULSE_SERVER": "${localEnv:PULSE_SERVER}", // 设置 PulseAudio 服务器环境变量
+		"LIBGL_ALWAYS_SOFTWARE": "1" // 设置 OpenGL 始终使用软件渲染
 	},
-	// Set *default* container specific settings.json values on container create.
+	// 定义容器创建时特定的 VS Code 设置
 	"customizations": {
-		"vscode": {
-			"extensions": [
+		"vscode": { // 针对 VS Code 的自定义设置
+			"extensions": [ // 自动安装在容器中的 VS Code 扩展列表
 				"althack.ament-task-provider",
 				"betwo.b2-catkin-tools",
 				"DotJoshJohnson.xml",

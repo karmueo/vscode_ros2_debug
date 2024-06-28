@@ -7,16 +7,17 @@
     // Example launch of a python file
     {
       "name": "Python: Current File",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
     },
-    // Example gdb launch of a ros executable
+    // gdb 启动 ros 可执行文件的示例
     {
-      "name": "(gdb) Launch (merge-install)",
+      "name": "(gdb) 调试ros2节点",
       "type": "cppdbg",
       "request": "launch",
+      // "program": "${workspaceFolder}/install/lib/${input:package}/${input:program}",
       "program": "${workspaceFolder}/install/lib/${input:package}/${input:program}",
       "args": [],
       "preLaunchTask": "build",
@@ -71,20 +72,20 @@
     {
       "id": "package",
       "type": "promptString",
-      "description": "Package name",
-      "default": "examples_rclcpp_minimal_publisher"
+      "description": "默认的包名",
+      "default": "cpp_pubsub"
     },
     {
       "id": "program",
       "type": "promptString",
-      "description": "Program name",
-      "default": "publisher_member_function"
+      "description": "默认程序",
+      "default": "listener"
     },
     {
       "id": "ros_launch",
       "type": "promptString",
-      "description": "ROS launch name",
-      "default": "file_name_launch.py"
+      "description": "默认的launch.py文件名",
+      "default": "cpp_pubsub_launch.py"
     }
   ]
 }

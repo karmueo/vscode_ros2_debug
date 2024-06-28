@@ -4,9 +4,11 @@
         100
     ],
     "files.associations": {
+        "*.html": "html",
         "*.repos": "yaml",
         "*.world": "xml",
-        "*.xacro": "xml"
+        "*.xacro": "xml",
+        "system_error": "cpp"
     },
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages/"
@@ -72,4 +74,6 @@
         ".devcontainer/devcontainer.json"
     ],
     "ament-task-provider.envSetup": "source /opt/ros/humble/setup.bash",
+    "ros.distro": "humble",
+    "cmake.ignoreCMakeListsMissing": true,
 }
