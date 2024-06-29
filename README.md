@@ -25,5 +25,12 @@
 
 ## 使用方法 <a name = "使用方法"></a>
 
-- 在 VSCode 中打开它（文件 -> 打开文件夹）。  当第一次打开它时，应该会看到一个小弹出窗口，询问是否要在容器中打开它。说是！
+### 1. 先决条件
+
+- [docker](https://docs.docker.com/engine/install/)
+- [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+### 2. 用法
+
+- 在Vscode中打开项目，按`ctrl+shift+p`，输入`Dev Containers: Reopen in Container`
 
