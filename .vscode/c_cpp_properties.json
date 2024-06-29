@@ -3,8 +3,9 @@
         {
             "name": "Linux", // 配置名称，表明这是针对 Linux 系统的设置
             "includePath": [ // 指定 IntelliSense 查找头文件的路径
-                "${workspaceFolder}/**",
-                "/opt/ros/humble/include/**"
+                "${workspaceFolder}/**", // ${workspaceFolder}代表当前打开的工作区（或项目）的根目录
+                "/opt/ros/humble/include/**",
+                "${workspaceFolder}/install/include/**",
             ],
             "defines": [], // 预处理器定义，用于条件编译等
             "compilerPath": "/usr/bin/gcc", // 指定编译器的路径，这里使用的是 GCC
